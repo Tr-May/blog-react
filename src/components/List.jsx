@@ -17,10 +17,6 @@ const List = () => {
 
   const [editId, setEditId] = useState("");
 
-  useEffect(() => {
-    console.log(posts);
-  }, [posts]);
-
   //initialize useRef
   const getTitle = useRef();
   const getContent = useRef();
@@ -41,6 +37,10 @@ const List = () => {
     getContent.current.value = "";
 
     toggleCreate();
+  };
+
+  const cancelCreate = () => {
+    setIsCreate(!isCreate);
   };
 
   const toggleCreate = () => {
@@ -72,6 +72,10 @@ const List = () => {
     setPosts(updatedPosts);
   };
 
+  const cancelEdit = () => {
+    setIsEdit(!isEdit);
+  };
+
   const deletePost = (id) => {
     const modifiedPost = posts.filter((eachPost) => {
       return eachPost.id !== id;
@@ -86,6 +90,7 @@ const List = () => {
           saveTitleToState={saveTitleToState}
           saveContentToState={saveContentToState}
           savePost={savePost}
+          cancelCreate={cancelCreate}
           getTitle={getTitle}
           getContent={getContent}
         />
@@ -98,9 +103,10 @@ const List = () => {
     return (
       <Edit
         post={post}
-        updatePost={updatePost}
         saveTitleToState={saveTitleToState}
         saveContentToState={saveContentToState}
+        updatePost={updatePost}
+        cancelEdit={cancelEdit}
       />
     );
   } else {
@@ -115,9 +121,9 @@ const List = () => {
       );
     } else {
       return (
-        <div className="container text-center">
+        <div className="container">
           <h1 className="text-center my-3">Blog Posts</h1>
-          <table className="table table-hover w-50 mx-auto">
+          <table className="table table-hover w-75 mx-auto">
             <thead>
               <tr>
                 <th scope="col">#</th>
@@ -140,7 +146,11 @@ const List = () => {
             </tbody>
           </table>
           <br />
-          <button className="btn btn-primary" onClick={toggleCreate}>
+          <button
+            className="btn btn-primary"
+            onClick={toggleCreate}
+            style={{ marginLeft: "150px" }}
+          >
             <AiOutlinePlus /> Create New Post
           </button>
         </div>

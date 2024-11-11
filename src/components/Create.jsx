@@ -1,10 +1,12 @@
 import React from "react";
 import { AiFillSave } from "react-icons/ai";
+import { TiCancel } from "react-icons/ti";
 
 const Create = ({
   saveTitleToState,
   saveContentToState,
   savePost,
+  cancelCreate,
   getTitle,
   getContent,
 }) => {
@@ -28,8 +30,11 @@ const Create = ({
       ></textarea>
       <br />
       <br />
-      <button className="btn btn-success" onClick={savePost}>
+      <button className="btn btn-success me-2" onClick={savePost}>
         <AiFillSave /> Save Post
+      </button>
+      <button className="btn btn-danger" onClick={cancelCreate}>
+        <TiCancel /> Cancel
       </button>
     </form>
   );

@@ -1,7 +1,14 @@
 import React from "react";
 import { AiFillEdit } from "react-icons/ai";
+import { TiCancel } from "react-icons/ti";
 
-const Edit = ({ post, updatePost, saveTitleToState, saveContentToState }) => {
+const Edit = ({
+  post,
+  updatePost,
+  saveTitleToState,
+  saveContentToState,
+  cancelEdit,
+}) => {
   return (
     <>
       <form className="container mt-3 w-50 mx-auto">
@@ -23,9 +30,12 @@ const Edit = ({ post, updatePost, saveTitleToState, saveContentToState }) => {
         ></textarea>
         <br />
         <br />
-        <button className="btn btn-success" onClick={updatePost}>
+        <button className="btn btn-success me-2" onClick={updatePost}>
           <AiFillEdit className="me-2" />
           Update Post
+        </button>
+        <button className="btn btn-danger" onClick={cancelEdit}>
+          <TiCancel /> Cancel
         </button>
       </form>
     </>
