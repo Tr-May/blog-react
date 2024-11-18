@@ -113,7 +113,8 @@ const List = () => {
     if (posts.length === 0) {
       return (
         <div className="container mx-auto my-5 text-center">
-          <h1 className="text-center">No post to show!</h1>
+          <h1 className="text-center">All Posts</h1>
+          <h2 className="text-center text-danger py-3">No post to show!</h2>
           <button className="btn btn-primary" onClick={toggleCreate}>
             <AiOutlinePlus /> Create New Post
           </button>
